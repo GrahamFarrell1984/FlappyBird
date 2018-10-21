@@ -112,7 +112,14 @@ public class Game {
             
             // FPS Check
             
-            
+            if(System.currentTimeMillis() - timeAtLastFpsCheck >= 1000) {
+                
+                System.out.println("Fps: " + ticks);
+                gameWindow.setTitle(gameName + " - Fps: " + ticks);
+                ticks = 0;
+                timeAtLastFpsCheck = System.currentTimeMillis();
+                
+            }
             
         }
         
