@@ -107,7 +107,8 @@ public class Game {
             
             // Rendering
             
-            
+            interpolation = (float) (System.currentTimeMillis() + TIME_PER_TICK - nextGameTick) / (float) TIME_PER_TICK;
+            render(interpolation);
             
             // FPS Check
             
