@@ -29,6 +29,30 @@ public class Game {
     private ArrayList<Updatable> updatables = new ArrayList<>();
     private ArrayList<Renderable> renderables = new ArrayList<>();
     
+    public void addUpdatable(Updatable u) {
+        
+        updatables.add(u);
+        
+    }
+    
+    public void removeUpdatable(Updatable u) {
+        
+        updatables.remove(u);
+        
+    }
+    
+    public void addRenderable(Renderable r) {
+        
+        renderables.add(r);
+        
+    }
+    
+    public void removeRenderable(Renderable r) {
+        
+        renderables.remove(r);
+        
+    }
+    
     public void start() {
         
         // Init Window
@@ -51,6 +75,17 @@ public class Game {
         input = new Input();
         
         // Game Loop
+        
+        final int TICKS_PER_SECOND = 60;
+        final int TIME_PER_TICK = 1000 / TICKS_PER_SECOND;
+        final int MAX_FRAMESKIPS = 5;
+        
+        long nextGameTick = System.currentTimeMillis();
+        int loops;
+        float interpolation;
+        
+        long timeAtLastFpsCheck =0;
+        int ticks = 0;
         
         boolean running = true;
         
