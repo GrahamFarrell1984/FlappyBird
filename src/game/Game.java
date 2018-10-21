@@ -91,6 +91,26 @@ public class Game {
         
         while(running) {
             
+            // Updataing
+            
+            loops = 0;
+            
+            while(System.currentTimeMillis() > nextGameTick && loops < MAX_FRAMESKIPS) {
+                
+                update();
+                ticks++;
+                
+                nextGameTick = nextGameTick + TIME_PER_TICK;
+                loops++;
+                
+            }
+            
+            // Rendering
+            
+            
+            
+            // FPS Check
+            
             
             
         }
