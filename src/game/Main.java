@@ -17,11 +17,12 @@ public class Main {
         
         // Initialise Game Objects
         
-        
+        Pipes p = new Pipes();
         
         // Add Updatables And Renderables
         
-        
+        g.addRenderable(p);
+        g.addUpdatable(p);
         
         // Start!
         
