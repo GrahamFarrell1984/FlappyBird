@@ -5,6 +5,7 @@
  */
 package game;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.util.Random;
 
@@ -113,10 +114,53 @@ public class Pipes implements Updatable, Renderable {
     @Override
     public void render(Graphics2D g, float interpolation) {
     
+        g.setColor(Color.RED);
         
+        // Pipe 1
+        
+        g.fillRect((int) (x1 + (xVel * interpolation)), 0, pipeWidth, (int) y1);
+        g.fillRect((int) (x1 + (xVel * interpolation)), (int) (y1 + pipeVerticalSpacing), pipeWidth, Game.HEIGHT);
+        
+        // Pipe 2
+        
+        g.fillRect((int) (x2 + (xVel * interpolation)), 0, pipeWidth, (int) y2);
+        g.fillRect((int) (x2 + (xVel * interpolation)), (int) (y2 + pipeVerticalSpacing), pipeWidth, Game.HEIGHT);
+        
+        // Pipe 3
+        
+        g.fillRect((int) (x3 + (xVel * interpolation)), 0, pipeWidth, (int) y3);
+        g.fillRect((int) (x3 + (xVel * interpolation)), (int) (y3 + pipeVerticalSpacing), pipeWidth, Game.HEIGHT);
     
     }
     
+    public float[] getCurrentPipe() {
+        
+        return pipeCoords[currentPipe];
+        
+    }
     
+    public int getCurrentPipeId() {
+        
+        return currentPipe;
+        
+    }
+    
+    public int getPipeWidth() {
+        
+        return pipeWidth;
+        
+    }
+    
+    public int getPipeHorizontalSpacing() {
+        
+        return pipeHorizontalSpacing;
+        
+    }
+    
+    public int getPipeVerticalSpacing() {
+        
+        return pipeVerticalSpacing;
+        
+    }
     
 }
