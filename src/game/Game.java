@@ -7,6 +7,7 @@ package game;
 
 import java.awt.Canvas;
 import java.awt.Dimension;
+import java.util.ArrayList;
 import javax.swing.JFrame;
 
 /**
@@ -20,6 +21,11 @@ public class Game {
     private String gameName = "Flappy Bird";
     
     private Canvas game = new Canvas();
+    
+    private Input input;
+    
+    private ArrayList<Updatable> updatables = new ArrayList<>();
+    private ArrayList<Renderable> renderables = new ArrayList<>();
     
     public void start() {
         
@@ -38,6 +44,10 @@ public class Game {
         gameWindow.add(game);
         gameWindow.setLocationRelativeTo(null);
         
+        // Init Input
+        
+        input = new Input();
+        
         // Game Loop
         
         boolean running = true;
@@ -49,6 +59,26 @@ public class Game {
         }
         
         // Game End
+        
+    }
+    
+    private void update() {
+        
+        for(Updatable u : updatables) {
+            
+            u.update(input);
+            
+        }
+        
+    }
+    
+    private void render(float interpolation) {
+        
+        for(Renderable r : renderables) {
+            
+            r.render(g2d, interpolation);
+            
+        }
         
     }
     
