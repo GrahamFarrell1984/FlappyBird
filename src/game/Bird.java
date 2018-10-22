@@ -8,6 +8,7 @@ package game;
 import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 
 /**
  *
@@ -36,7 +37,17 @@ public class Bird implements Updatable, Renderable {
         
         this.pipes = pipes;
         
-        
+        try {
+            
+            flapUp = Sprite.getSprite("bird_up.png");
+            flapDown = Sprite.getSprite("bird_down.png");
+            
+        } catch (IOException ex) {
+            
+            System.err.println(ex.getMessage());
+            System.exit(1);
+            
+        }
         
     }
     
@@ -57,6 +68,22 @@ public class Bird implements Updatable, Renderable {
     @Override
     public void update(Input input) {
     
+        y = y + yVel;
+        yVel = yVel + gravity;
+        
+        if(y < 0) {
+            
+            y = 0;
+            yVel = 0;
+            
+        }
+        
+        if(input.isSpacePressed()) {
+            
+            flap();
+            
+        }
+        
         
     
     }
