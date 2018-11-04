@@ -120,7 +120,5 @@ public class Bird implements Updatable, Renderable {
         g.drawString("Score: " + score, 20, 50);
     
     }
-    
-    
-    
+
 }
